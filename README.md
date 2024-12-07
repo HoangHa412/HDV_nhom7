@@ -10,3 +10,4 @@ npm run develop
 cd giao-dien
 npm install
 npm run dev
+```
