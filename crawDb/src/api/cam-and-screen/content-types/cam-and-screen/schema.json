@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cam_and_screens",
+  "info": {
+    "singularName": "cam-and-screen",
+    "pluralName": "cam-and-screens",
+    "displayName": "CamAndScreen",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "do_phan_giai_cam_sau": {
+      "type": "string"
+    },
+    "quay_phim_cam_sau": {
+      "type": "string"
+    },
+    "tinh_nang_cam_sau": {
+      "type": "text"
+    },
+    "do_phan_giai_cam_truoc": {
+      "type": "string"
+    },
+    "tinh_nang_cam_truoc": {
+      "type": "text"
+    },
+    "man_hinh": {
+      "type": "string"
+    },
+    "do_phan_giai": {
+      "type": "string"
+    },
+    "kich_thuoc": {
+      "type": "string"
+    },
+    "do_sang_max": {
+      "type": "string"
+    },
+    "mat_kinh_cam_ung": {
+      "type": "string"
+    },
+    "phones": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::phone.phone",
+      "mappedBy": "cam_and_screen"
+    },
+    "flash": {
+      "type": "string"
+    }
+  }
+}

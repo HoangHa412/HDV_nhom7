@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "des_and_materials",
+  "info": {
+    "singularName": "des-and-material",
+    "pluralName": "des-and-materials",
+    "displayName": "DesAndMaterial"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "thiet_ke": {
+      "type": "string"
+    },
+    "chat_lieu": {
+      "type": "string"
+    },
+    "kich_thuoc": {
+      "type": "string"
+    },
+    "ra_mat": {
+      "type": "string"
+    },
+    "phones": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::phone.phone",
+      "mappedBy": "des_and_material"
+    }
+  }
+}

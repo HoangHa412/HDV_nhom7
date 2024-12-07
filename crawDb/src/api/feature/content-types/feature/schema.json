@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "features",
+  "info": {
+    "singularName": "feature",
+    "pluralName": "features",
+    "displayName": "Feature",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bao_mat": {
+      "type": "string"
+    },
+    "tinh_nang_dac_biet": {
+      "type": "string"
+    },
+    "ghi_am": {
+      "type": "string"
+    },
+    "xem_phim": {
+      "type": "string"
+    },
+    "nghe_nhac": {
+      "type": "text"
+    },
+    "phones": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::phone.phone",
+      "mappedBy": "feature"
+    },
+    "radio": {
+      "type": "string"
+    }
+  }
+}

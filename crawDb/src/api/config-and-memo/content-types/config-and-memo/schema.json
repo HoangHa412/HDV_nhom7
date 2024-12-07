@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "config_and_memos",
+  "info": {
+    "singularName": "config-and-memo",
+    "pluralName": "config-and-memos",
+    "displayName": "ConfigAndMemo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "he_dieu_hanh": {
+      "type": "string"
+    },
+    "chip": {
+      "type": "string"
+    },
+    "cpu": {
+      "type": "string"
+    },
+    "gpu": {
+      "type": "string"
+    },
+    "ram": {
+      "type": "string"
+    },
+    "dung_luong_luu_tru": {
+      "type": "string"
+    },
+    "danh_ba": {
+      "type": "string"
+    },
+    "phones": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::phone.phone",
+      "mappedBy": "config_and_memo"
+    },
+    "dung_luong_con_lai": {
+      "type": "string"
+    },
+    "the_nho": {
+      "type": "string"
+    }
+  }
+}

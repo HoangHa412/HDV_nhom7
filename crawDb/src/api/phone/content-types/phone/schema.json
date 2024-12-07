@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "phones",
+  "info": {
+    "singularName": "phone",
+    "pluralName": "phones",
+    "displayName": "phone",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "phone": {
+      "type": "string"
+    },
+    "battery_and_charger": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::battery-and-charger.battery-and-charger",
+      "inversedBy": "phones"
+    },
+    "cam_and_screen": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::cam-and-screen.cam-and-screen",
+      "inversedBy": "phones"
+    },
+    "config_and_memo": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::config-and-memo.config-and-memo",
+      "inversedBy": "phones"
+    },
+    "connect": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::connect.connect",
+      "inversedBy": "phones"
+    },
+    "des_and_material": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::des-and-material.des-and-material",
+      "inversedBy": "phones"
+    },
+    "feature": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::feature.feature",
+      "inversedBy": "phones"
+    },
+    "img": {
+      "type": "string"
+    },
+    "phone_company": {
+      "type": "string"
+    },
+    "link_san_pham": {
+      "type": "string"
+    }
+  }
+}
