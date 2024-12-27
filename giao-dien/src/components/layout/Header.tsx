@@ -6,7 +6,6 @@ import Link from "next/link";
 
 const Header: FC<{ phone1: Phone, phone2: Phone }> = ({phone1, phone2}) => {
     const [showHeader, setShowHeader] = useState(false);
-    const [showDiffrences, setShowDiffrences] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -26,10 +25,6 @@ const Header: FC<{ phone1: Phone, phone2: Phone }> = ({phone1, phone2}) => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
-
-    const handleToggleDiffernces = () => {
-        setShowDiffrences(!showDiffrences);
-    }
 
     return (
         <header

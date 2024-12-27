@@ -26,7 +26,6 @@ async function saveToStrapi() {
                 console.log(`Không tìm thấy dữ liệu cho ${phoneUrl.name}.`);
                 continue;
             }
-
             const configAndMemoIds = await crawlConfigAndMemo($, thongso);
             const camAndScreenIds = await crawlCamAndScreen($, thongso);
             const batteryAndChargerIds = await crawlBatteryAndCharger($, thongso);

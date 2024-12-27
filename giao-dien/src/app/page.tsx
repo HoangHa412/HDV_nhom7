@@ -1,21 +1,22 @@
-'use client'
+'use client';
 import Header from "@/components/layout/Header";
-import React, {useEffect, useState} from "react";
-import {motion} from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import ComparisonTable from "@/components/main/CompareTable";
-import {Phone} from "@/types";
+import { Phone } from "@/types";
 import phoneService from "@/services/phone";
-import Select, {SingleValue} from "react-select";
+import Select, { SingleValue } from "react-select";
 import Image from "next/image";
+import predictBetterPhone from "@/components/main/predictBetterPhone";
 
 const listCompany = [
-    {name: 'SamSung'},
-    {name: 'Iphone'},
-    {name: 'ViVo'},
-    {name: 'Xiaomi'},
-    {name: 'Realme'},
-    {name: 'Tecno'},
-    {name: 'Honor'},
+    { name: 'SamSung' },
+    { name: 'Iphone' },
+    { name: 'ViVo' },
+    { name: 'Xiaomi' },
+    { name: 'Realme' },
+    { name: 'Tecno' },
+    { name: 'Honor' },
 ];
 
 const companyOptions = listCompany.map((company) => ({
@@ -42,7 +43,6 @@ const CompareBlock = ({
                 .then((response) => {
                     if (Array.isArray(response.data)) {
                         setPhones(response.data);
-                        // console.log(response.data);
                     } else {
                         setPhones([]);
                     }
@@ -94,7 +94,6 @@ const CompareBlock = ({
                     />
                 )}
             </div>
-            {/* Dropdown chọn hãng */}
             <Select
                 options={companyOptions}
                 placeholder="Chọn hãng điện thoại"
@@ -109,7 +108,6 @@ const CompareBlock = ({
                     }),
                 }}
             />
-            {/* Dropdown chọn điện thoại */}
             <Select
                 options={phones.map((phone) => ({
                     value: phone.phone,
@@ -138,48 +136,54 @@ export default function Home() {
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
     const handleCompareClick = () => {
-        if(block1Phone && block2Phone){
+        if (block1Phone && block2Phone) {
             setIsCompareVisible(true);
-            setErrors({ten: ''})
+            setErrors({ ten: '' });
         } else {
-            setIsCompareVisible(false)
-            setErrors({ten: 'Vui lòng chọn 2 điện thoại để so sánh'})
+            setIsCompareVisible(false);
+            setErrors({ ten: 'Vui lòng chọn 2 điện thoại để so sánh' });
         }
-    }
+    };
+
     return (
         <div>
             {block1Phone && block2Phone && (
-                <Header phone1={block1Phone} phone2={block2Phone}/>
+                <Header phone1={block1Phone} phone2={block2Phone} />
             )}
-            <div className='w-full'>
-                <div className="flex  pt-[80px] justify-center">
+            <div className="w-full">
+                <div className="flex pt-[80px] justify-center pb-[50px]">
                     <div className="flex flex-col gap-7">
                         <div className="flex gap-[100px] items-center justify-center">
-                            {/* Compare Block 1 */}
-                            <CompareBlock onPhoneSelect={setBlock1Phone}/>
-                            {/* Compare Block 2 */}
-                            <CompareBlock onPhoneSelect={setBlock2Phone}/>
+                            <CompareBlock onPhoneSelect={setBlock1Phone} />
+                            <CompareBlock onPhoneSelect={setBlock2Phone} />
                         </div>
                         <div className="flex justify-center flex-col items-center gap-3">
                             {errors.ten && (
-                                <span className='text-base text-gray-600'>{errors.ten}</span>
+                                <span className="text-base text-gray-600">{errors.ten}</span>
                             )}
                             <motion.button
                                 aria-label="View more recruitment details"
                                 className="bg-gradient-to-r from-[#FFB02D] to-[#EB7B31] text-white h-[48px] w-fit px-[100px] flex gap-2 rounded-[8px] items-center justify-center whitespace-nowrap"
-                                whileHover={{scale: 1.1}}
-                                whileTap={{scale: 0.9}}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
                                 onClick={handleCompareClick}
-                                transition={{type: 'spring', stiffness: 400, damping: 10}}
+                                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                             >
-                    <span className="font-medium text-xl leading-[26px]">
-                        So Sánh
-                    </span>
+                                <span className="font-medium text-xl leading-[26px]">
+                                    So Sánh
+                                </span>
                             </motion.button>
                         </div>
-                        {/* Render Comparison Table when both phones are selected */}
                         {isCompareVisible && block1Phone && block2Phone && (
-                            <ComparisonTable phone1={block1Phone} phone2={block2Phone}/>
+                            <>
+                                <ComparisonTable phone1={block1Phone} phone2={block2Phone} />
+                                <div className="text-center mt-4">
+                                    <h2 className="font-bold text-lg text-[#001230]">Kết quả dự đoán</h2>
+                                    <p className="text-base text-gray-700">
+                                        {predictBetterPhone(block1Phone, block2Phone)}
+                                    </p>
+                                </div>
+                            </>
                         )}
                     </div>
                 </div>
